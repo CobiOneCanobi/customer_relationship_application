@@ -66,13 +66,40 @@ class Rolodex
     puts "Successfully deleted"
   end
 
+  def display_attribute(contact_index)
+    while true
+      puts "[1] First Name"
+      puts "[2] Last Name"
+      puts "[3] Email"
+      puts "[4] Note"
+      puts "[5] Done"
+      modify = gets.chomp.to_i
+
+      case modify
+      when 1
+        puts "First Name: #{@contacts[contact_index].first_name}"
+      when 2
+        puts "Last Name: #{@contacts[contact_index].last_name}"
+      when 3
+        "Email: #{@contacts[contact_index].email}"
+      when 4
+        puts "Note: #{@contacts[contact_index].note}"
+      when 5
+        break
+      else
+       puts "Please input a number on the menu"
+      end
+    end
+  end
+
 
   def contact_find(contact_id, method)
-    contact = @contacts.find_index{|item| contact_id == item.id}
+    contact_index = @contacts.find_index{|item| contact_id == item.id}
 
-    if contact != nil
-      modify_contact(contact) if method == "m"
-      delete_contact(contact) if method == "dc"
+    if contact_index != nil
+      modify_contact(contact_index) if method == "m"
+      delete_contact(contact_index) if method == "dc"
+      display_attribute(contact_index) if method == "da"
     else
       puts "That is not a contact id number that exists"
     end

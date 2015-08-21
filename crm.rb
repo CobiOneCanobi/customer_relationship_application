@@ -33,7 +33,7 @@ class CRM
     when 2 then modify_contact
     when 3 then delete_contact
     when 4 then display_contacts
-    #when 5 then display_attribute
+    when 5 then display_attribute
     else
       puts "Please input a number on the menu"
     end
@@ -60,10 +60,17 @@ class CRM
   end
 
   def delete_contact
-    print "Please enter the id number of the contact you'd like to modify (if you don't know the id number, display all contacts first) "
+    print "Please enter the id number of the contact you'd like to delete (if you don't know the id number, display all contacts first) "
     contact_id = gets.chomp.to_i
 
     @rolodex.contact_find(contact_id, "dc")
+  end
+
+  def display_attribute
+    print "Please enter the id number of the contact you'd like to view an attribute of (if you don't know the id number, display all contacts first) "
+    contact_id = gets.chomp.to_i
+
+    @rolodex.contact_find(contact_id, "da")
   end
 
   def display_contacts
