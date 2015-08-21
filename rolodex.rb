@@ -8,15 +8,14 @@ class Rolodex
     @contacts = []
   end
 
-  def contacts
-    @contacts
-  end
 
   def add_contact(first_name, last_name, email, note)
     contact = Contact.new(@@id, first_name, last_name, email, note)
     @contacts << contact
     @@id += 1
+    puts "Successfully added"
   end
+
 
   def display_contacts
     @contacts.each do |contact|
@@ -28,6 +27,7 @@ class Rolodex
       puts ""
     end
   end
+
 
   def modify_contact(contact_index)
 
@@ -60,11 +60,19 @@ class Rolodex
     end
   end
 
-  def contact_find(contact_id)
+
+  def delete_contact(contact_index)
+    @contacts.delete_at(contact_index)
+    puts "Successfully deleted"
+  end
+
+
+  def contact_find(contact_id, method)
     contact = @contacts.find_index{|item| contact_id == item.id}
 
     if contact != nil
-      modify_contact(contact)
+      modify_contact(contact) if method == "m"
+      delete_contact(contact) if method == "dc"
     else
       puts "That is not a contact id number that exists"
     end

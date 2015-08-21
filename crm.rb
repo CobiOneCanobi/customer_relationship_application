@@ -31,7 +31,7 @@ class CRM
     case user_selected
     when 1 then add_contact
     when 2 then modify_contact
-    #when 3 then delete_contact
+    when 3 then delete_contact
     when 4 then display_contacts
     #when 5 then display_attribute
     else
@@ -55,8 +55,15 @@ class CRM
     print "Please enter the id number of the contact you'd like to modify (if you don't know the id number, display all contacts first) "
     contact_id = gets.chomp.to_i
 
-    @rolodex.contact_find(contact_id)
+    @rolodex.contact_find(contact_id, "m")
 
+  end
+
+  def delete_contact
+    print "Please enter the id number of the contact you'd like to modify (if you don't know the id number, display all contacts first) "
+    contact_id = gets.chomp.to_i
+
+    @rolodex.contact_find(contact_id, "dc")
   end
 
   def display_contacts
