@@ -31,6 +31,11 @@ class CRM
     case user_selected
     when 1 then add_contact
     #when 2 then modify_contact
+    #when 3 then delete_contact
+    when 4 then display_contacts
+    #when 5 then display_attribute
+    else
+      puts "Please input a number on the menu"
     end
   end
 
@@ -44,6 +49,10 @@ class CRM
     print "Enter a Note: "
     note = gets.chomp
     @rolodex.add_contact(first_name, last_name, email, note)
+  end
+
+  def display_contacts
+    @rolodex.display_contacts
   end
 
   def self.run(name)

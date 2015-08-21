@@ -17,4 +17,15 @@ class Rolodex
     @contacts << contact
     @@id += 1
   end
+
+  def display_contacts
+    @contacts.each do |contact|
+      puts "id: #{contact.id}"
+      puts "first name: #{contact.first_name}"
+      puts "last name: #{contact.last_name}"
+      puts "email: #{contact.email}"
+      puts "note: #{contact.note}"
+      puts ""
+    end
+  end
 end
