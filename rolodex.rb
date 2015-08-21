@@ -28,4 +28,45 @@ class Rolodex
       puts ""
     end
   end
+
+  def modify_contact(contact_index)
+
+    while true
+      puts "[1] First Name"
+      puts "[2] Last Name"
+      puts "[3] Email"
+      puts "[4] Note"
+      puts "[5] Done"
+      modify = gets.chomp.to_i
+
+      case modify
+      when 1
+        print "Enter a new first name: "
+        @contacts[contact_index].first_name = gets.chomp
+      when 2
+        print "Enter a new last name: "
+        @contacts[contact_index].last_name = gets.chomp
+      when 3
+        print "Enter a new first email: "
+        @contacts[contact_index].email = gets.chomp
+      when 4
+        print "Enter a new note: "
+        @contacts[contact_index].note = gets.chomp
+      when 5
+        break
+      else
+       puts "Please input a number on the menu"
+      end
+    end
+  end
+
+  def contact_find(contact_id)
+    contact = @contacts.find_index{|item| contact_id == item.id}
+
+    if contact != nil
+      modify_contact(contact)
+    else
+      puts "That is not a contact id number that exists"
+    end
+  end
 end

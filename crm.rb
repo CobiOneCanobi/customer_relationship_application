@@ -30,7 +30,7 @@ class CRM
   def call_option(user_selected)
     case user_selected
     when 1 then add_contact
-    #when 2 then modify_contact
+    when 2 then modify_contact
     #when 3 then delete_contact
     when 4 then display_contacts
     #when 5 then display_attribute
@@ -49,6 +49,14 @@ class CRM
     print "Enter a Note: "
     note = gets.chomp
     @rolodex.add_contact(first_name, last_name, email, note)
+  end
+
+  def modify_contact
+    print "Please enter the id number of the contact you'd like to modify (if you don't know the id number, display all contacts first) "
+    contact_id = gets.chomp.to_i
+
+    @rolodex.contact_find(contact_id)
+
   end
 
   def display_contacts
